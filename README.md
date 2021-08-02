@@ -1,0 +1,129 @@
+# NodeJS-Practice
+
+
+
+## 변수 그리고 호이스팅
+
+목차
+
+[1.변수의 생성과정](#변수의-생성과정)
+
+[2.호이스팅](#호이스팅)
+
+[3.var](#var)
+
+[4.let](#let)
+
+[5.const](#const)
+
+[6.스코프](#스코프)
+
+
+### 변수의 생성과정
+
+변수는 3단계의 과정을 거친다.
+
+1. 선언 단계
+2. 초기화 단계
+3. 할당 단계
+
+### 호이스팅
+
+스코프 내부 어디서든 변수 선언은 최상위에 선언된 것 처럼 행동
+변수 선언 뿐만 아니라, var, let, const, function, function*, class 키워드를 사용해 선언한 모든 식별자(변수, 함수, 클래스 등)는 호이스팅이 된다
+
+## var
+
+**var변수의 생성과정**
+
+1. 선언 및 초기화 단계
+2. 할당 단계
+
+    초기화 : undefined 를 할당 해주는 단계
+    **var는 중복 선언이 가능하다.**
+
+```jsx
+var name = 'Mike';
+console.log(name);
+
+var name = 'jane';
+console.log(name);
+```
+
+**var는 선언하기 전에 사용할 수 있다.**
+
+```jsx
+
+console.log(name);  // undefined
+var name = 'Mike'; //선언 할당 초기화 
+
+위의 코드는 밑의 코드처럼 동작한다.
+선언부분이 최상위로 끌어 올려진것 처럼 사용됨 -> hoising(호이스팅)
+할당은 호이스팅 되지 않는다.
+
+var name;   // 선언
+console.log(name);  // undefined
+name = 'Mike'; //할당
+```
+
+ 
+
+## let
+
+**let의 생성과정**
+
+1. 선언 단계
+2. 초기화 단계
+3. 할당 단계
+
+→ 선언 단계는 호이스팅되면서 이루어짐 초기화 단계는 실제코드에 도달했을 때 일어남
+
+```jsx
+console.log(name);  // ReferenceRrror
+let name = 'Mike';
+```
+
+## const (es6)
+
+**const의 생성과정**
+
+1. 선언 + 초기화 + 할당
+
+동시에 일어나야함
+
+```jsx
+const gender;
+gender = 'male'; //error
+```
+
+## 스코프
+
+var 함수 스코프
+
+→ 함수 내에서 유효하다. 함수 내부안에서 지역변수
+
+let, const 블록 스코프
+
+→ 블록 스코프는 코드 블록내에서만 유효하며 외부에서는 접근이 불가능 하다
+
+```jsx
+const age = 30;
+if (age > 19){
+	var txt = '성인'
+}
+console.log(txt);   //성인
+
+--------------------------
+
+const age = 30;
+if (age > 19){
+	let txt = '성인'
+}
+console.log(txt);   //error
+
+function add(num1,num2){
+	var result = num1 + num2;
+}
+add(2,3);
+console.log(result); // error
+```
