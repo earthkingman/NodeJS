@@ -7,10 +7,15 @@
 목차
 
 [1.변수의 생성과정](#변수의-생성과정)
+
 [2.호이스팅](#호이스팅)
+
 [3.var](#var)
+
 [4.let](#let)
+
 [5.const](#const)
+
 [6.스코프](#스코프)
 
 
@@ -78,7 +83,7 @@ console.log(name);  // ReferenceRrror
 let name = 'Mike';
 ```
 
-## const (es6)
+## const
 
 **const의 생성과정**
 
